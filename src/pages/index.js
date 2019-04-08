@@ -7,9 +7,6 @@ import '../components/layout.css';
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-    }
   }
 
   render() {

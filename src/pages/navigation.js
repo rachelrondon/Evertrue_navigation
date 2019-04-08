@@ -11,11 +11,15 @@ class Navigation extends React.Component {
       propertyName: [],
       properyId: '',
       theProperty: [],
+      display: "none",
     }
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = (e) => {
+    this.setState({
+      display: "flex"
+    })
     const property = [];
     e.properties.map((i) => {
       property.push({
@@ -26,22 +30,20 @@ class Navigation extends React.Component {
       })
    })
 
-   console.log('this is e.properties');
-   console.log(e.properties);
-
    this.setState({
      theProperty: property
    })
  }
 
   render() {
-    return (
+    return (      
         <div className="the-navigation">
           <div className="the-nav-item">
               {data.data.map((item) =>
                 <NavItem
                   name={item.name}
                   key={item.id}
+                  theAppKeys={item.app_keys}
                   onClick={event => this.handleClick(item.containing_object, event)}
                 />
               )}
@@ -53,12 +55,14 @@ class Navigation extends React.Component {
                   key={i.propertyId}
                   propertyKey={i.propertyKey}
                   propertyType={i.propertyType}
+                  display={this.state.display}
                 />
               )}
           </div>
       </div>
     )
   }
+
 }
 
 export default Navigation
