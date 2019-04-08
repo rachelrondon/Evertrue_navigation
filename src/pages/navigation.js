@@ -11,22 +11,23 @@ class Navigation extends React.Component {
       propertyName: [],
       properyId: '',
       theProperty: [],
-      clicked: false
     }
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = (e) => {
-    this.setState({
-      clicked: true
-    })
     const property = [];
     e.properties.map((i) => {
       property.push({
         propertyName: i.name,
-        properyId: i.id
+        properyId: i.id,
+        propertyKey: i.app_keys,
+        propertyType: i.data_type
       })
    })
+
+   console.log('this is e.properties');
+   console.log(e.properties);
 
    this.setState({
      theProperty: property
@@ -34,30 +35,30 @@ class Navigation extends React.Component {
  }
 
   render() {
-    console.log('this is this.state.property');
-    console.log(this.state.theProperty);
-
     return (
-      <div>
-        <nav>
-          {data.data.map((item) =>
-            <NavItem
-              name={item.name}
-              key={item.id}
-              onClick={event => this.handleClick(item.containing_object, event)}
-            />
-          )}
-          {this.state.theProperty.map((i) =>
-            <SubItem
-              name={i.propertyName}
-              key={i.propertyId}
-            />
-          )}
-        </nav>
+        <div className="the-navigation">
+          <div className="the-nav-item">
+              {data.data.map((item) =>
+                <NavItem
+                  name={item.name}
+                  key={item.id}
+                  onClick={event => this.handleClick(item.containing_object, event)}
+                />
+              )}
+            </div>
+            <div className="the-sub-item">
+              {this.state.theProperty.map((i) =>
+                <SubItem
+                  name={i.propertyName}
+                  key={i.propertyId}
+                  propertyKey={i.propertyKey}
+                  propertyType={i.propertyType}
+                />
+              )}
+          </div>
       </div>
     )
   }
-
 }
 
 export default Navigation

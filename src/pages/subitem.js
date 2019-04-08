@@ -1,9 +1,12 @@
 import React from "react";
+import '../components/layout.css';
 
 const SubItem = (props) => {
   return(
-    <div className="sub-item">
-      <h1 key={props.key}>This is the subitem: {props.name}</h1>
+    <div className="sub-item-layout" key={props.key}>
+      <h3>Type: {props.name}</h3>
+      <h3>Usage: {props.propertyKey}</h3>
+      <h3>EverTrue Field Name: {props.propertyType}</h3>
     </div>
   )
 }
