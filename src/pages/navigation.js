@@ -10,8 +10,7 @@ class Navigation extends React.Component {
     this.state = {
       propertyName: [],
       properyId: '',
-      theProperty: [],
-      display: "none",
+      theProperty: []
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -36,7 +35,7 @@ class Navigation extends React.Component {
  }
 
   render() {
-    return (      
+    return (
         <div className="the-navigation">
           <div className="the-nav-item">
               {data.data.map((item) =>
@@ -55,7 +54,6 @@ class Navigation extends React.Component {
                   key={i.propertyId}
                   propertyKey={i.propertyKey}
                   propertyType={i.propertyType}
-                  display={this.state.display}
                 />
               )}
           </div>
